@@ -12,6 +12,13 @@ def _get(name: str, default: str = "") -> str:
     return os.getenv(name, default).strip()
 
 
+# --- AI provider: "gemini" (free tier available) or "claude" ---
+LLM_PROVIDER = _get("LLM_PROVIDER", "gemini").lower()
+
+# --- Gemini (key from https://aistudio.google.com/apikey) ---
+GEMINI_API_KEY = _get("GEMINI_API_KEY")
+GEMINI_MODEL = _get("GEMINI_MODEL", "gemini-3.8-flash")
+
 # --- Claude ---
 CLAUDE_MODEL = _get("CLAUDE_MODEL", "claude-opus-5-5")
 CLAUDE_EFFORT = _get("CLAUDE_EFFORT", "medium")  # low | medium | high

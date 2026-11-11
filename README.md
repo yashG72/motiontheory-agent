@@ -1,12 +1,12 @@
 # MotionTheory lead agent
 
-An AI assistant (powered by Claude) that replies to people who message MotionTheory on **Instagram DMs** and **email**, answers their questions from your company knowledge, qualifies them as leads, and sends good ones to a discovery call booking link. Anything it can't answer (custom quotes, negotiation, upset clients) is handed to a human.
+An AI assistant (powered by Google Gemini's free tier, or Claude) that replies to people who message MotionTheory on **Instagram DMs** and **email**, answers their questions from your company knowledge, qualifies them as leads, and sends good ones to a discovery call booking link. Anything it can't answer (custom quotes, negotiation, upset clients) is handed to a human.
 
 ## How it works
 
 ```
 Instagram DM ──webhook──┐
-                        ├─> agent (Claude) ──> reply ──> draft for approval  (REPLY_MODE=draft)
+                        ├─> agent (Gemini) ──> reply ──> draft for approval  (REPLY_MODE=draft)
 Email inbox ──IMAP poll─┘        │                  └──> sent straight away (REPLY_MODE=auto)
                                  ├─ update_lead       saves name, service, budget, timeline, score
                                  ├─ get_booking_link  shares your Calendly/Cal.com link
@@ -18,7 +18,7 @@ Every contact, message, lead score and draft is stored in `data/agent.db` (SQLit
 | File | What it does |
 |---|---|
 | `knowledge/company.md` | **Your company info. Fill this in first.** The agent only says what's here. |
-| `app/agent.py` | The system prompt and the Claude tool-use loop |
+| `app/agent.py` | The system prompt and the AI tool-use loop (Gemini or Claude) |
 | `app/tools.py` | The lead tools the agent can call |
 | `app/channels/instagram.py` | Instagram webhook parsing and sending |
 | `app/channels/email_channel.py` | Reads unread mail (IMAP), sends threaded replies (SMTP) |
@@ -32,11 +32,19 @@ cd C:\Users\goyal\OneDrive\Desktop\MotionTheory_Agent
 python -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
-copy .env.example .env      # then put your ANTHROPIC_API_KEY in .env
+copy .env.example .env      # then put your GEMINI_API_KEY in .env
 python scripts\chat.py      # pretend to be a client
 ```
 
 Fill in `knowledge/company.md`, then chat again and see how the answers change.
+
+### Getting a free Gemini API key
+
+1. Go to https://aistudio.google.com/apikey and sign in with a Google account.
+2. Click **Create API key** and paste it into `.env` as `GEMINI_API_KEY`.
+3. Check https://aistudio.google.com/rate-limit for which models your key can use for free. If `gemini-3.8-flash` isn't listed, set `GEMINI_MODEL` to one that is.
+
+Free tier limits: roughly 10 requests a minute and a daily cap. Each client reply takes 1–3 requests. When the limit is hit the agent waits and retries. Note that on the free tier Google may use the conversations to improve its products; enabling billing on the Google project stops that.
 
 ## 2. Connect email
 
@@ -76,6 +84,6 @@ Interactive docs for all of these are at `http://localhost:8000/docs`. Once you 
 
 ## Notes
 
-- Model: `claude-opus-5-5` at `medium` effort. Change `CLAUDE_MODEL` / `CLAUDE_EFFORT` in `.env`; `claude-sonnet-5-5` is cheaper for high volume.
-- If Claude's safety filter declines a message, the request automatically retries on a fallback model (`fallbacks="default"` in `app/agent.py`).
+- AI provider: set `LLM_PROVIDER=gemini` (default, free tier) or `LLM_PROVIDER=claude` (paid, needs `ANTHROPIC_API_KEY`; model `claude-opus-5-5`, or `claude-haiku-5-5` for the cheapest option). No code changes needed to switch.
+- With Claude, if its safety filter declines a message, the request automatically retries on a fallback model (`fallbacks="default"` in `app/agent.py`).
 - Instagram only lets businesses reply within 24 hours of the client's last message.
