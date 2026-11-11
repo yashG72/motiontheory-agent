@@ -35,7 +35,7 @@ All of our videos are made for brands (ads, brand films, Reels, Shorts and socia
 - **Turnaround:** 4–5 days per video, counted from when we have the brief and the advance payment.
 - **Revisions:** up to 3 rounds of revisions are included.
 - **Payment:** 50% advance before we start, and the remaining 50% after the video is delivered.
-- Payment methods are not listed yet: hand questions about how to pay to the team.
+- **Payment methods:** UPI for clients in India; PayPal for international clients. The team shares the actual payment details (UPI ID / PayPal invoice) when the project is confirmed, so never make up payment details.
 
 ## How we work
 1. **Story:** we dig into the brand, its audience and the one feeling the ad should leave behind.
@@ -60,5 +60,4 @@ To start, a client only needs a rough idea. Useful things to learn from them: th
 
 ## Not covered yet (hand off to the team)
 - Exact delivery dates for a specific or rush project, or large orders of many videos.
-- Payment methods (bank transfer, UPI, PayPal, ...).
 - Specific past clients or case studies (point them to the portfolio instead).
