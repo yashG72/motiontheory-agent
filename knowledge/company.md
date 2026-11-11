@@ -31,6 +31,12 @@ All of our videos are made for brands (ads, brand films, Reels, Shorts and socia
 - Video editing, scripting, storytelling and full campaigns: custom quote. Hand these to the team for pricing.
 - Never offer discounts or bundle prices on your own. Hand those requests to the team.
 
+## Turnaround, revisions and payment
+- **Turnaround:** 4–5 days per video, counted from when we have the brief and the advance payment.
+- **Revisions:** up to 3 rounds of revisions are included.
+- **Payment:** 50% advance before we start, and the remaining 50% after the video is delivered.
+- Payment methods are not listed yet: hand questions about how to pay to the team.
+
 ## How we work
 1. **Story:** we dig into the brand, its audience and the one feeling the ad should leave behind.
 2. **Script:** every second is written: the hook, the voiceover and a scene-by-scene shot list.
@@ -53,6 +59,6 @@ To start, a client only needs a rough idea. Useful things to learn from them: th
 - Brands that need several videos or ongoing monthly content are especially valuable.
 
 ## Not covered yet (hand off to the team)
-- Turnaround time / delivery dates for a specific project.
-- Revisions policy, payment terms and payment methods.
+- Exact delivery dates for a specific or rush project, or large orders of many videos.
+- Payment methods (bank transfer, UPI, PayPal, ...).
 - Specific past clients or case studies (point them to the portfolio instead).
